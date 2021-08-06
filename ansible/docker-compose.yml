@@ -12,7 +12,7 @@ services:
     hostname: master01
     command: ["/usr/sbin/sshd","-D"]
     volumes:
-      - ansible_vol:/var/ans
+      - ./master/ansible:/var/ans
   host:
     links:
       - base

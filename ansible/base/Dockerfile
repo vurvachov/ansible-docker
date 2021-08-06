@@ -1,7 +1,7 @@
 # BASE image - used as a starting point by MASTER and HOST images
 
-# I use official Ubuntu 17.10 image as a starting point
-FROM ubuntu:17.10
+# I use official Debian Buster image as a starting point
+FROM debian:buster
 
 # install required packages
 RUN apt-get update \
