@@ -15,5 +15,8 @@ COPY ansible /var/ans/
 WORKDIR /var/ans
 
 # generate RSA key pair to allow master to communicate with managed nodes
-# default private key passphrase is '12345' (not a good idea for production environment ;)
-RUN ssh-keygen -t rsa -N 12345 -C "master key" -f master_key
+# default private key passphrase is empty (not a good idea for production environment ;)
+RUN ssh-keygen -t rsa -N "" -C "master key" -f /root/.ssh/id_rsa
+
+# turn off host_key_checking in ~/.ansible.cfg
+COPY ansible.cfg /root/.ansible.cfg

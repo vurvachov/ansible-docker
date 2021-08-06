@@ -46,32 +46,11 @@ Verify if network connection is working between master and managed hosts:
 
 `ping -c 2 host01`
 
-Start an [SSH Agent](https://man.openbsd.org/ssh-agent) on **master node** to handle SSH keys protected by passphrase:
-
-`ssh-agent bash`
-
-Load private key into SSH Agent in order to allow establishing connections without entering key passphrase every time:
-
-`ssh-add master_key`
-
-    Enter passphrase for master_key:
-
-As **passphrase** enter: `12345`
-
-Default key passphrase can be changed in [ansible/master/Dockerfile](./ansible/master/Dockerfile)
-
 ## Ansible playbooks
 
 Run a [sample ansible playbook](./ansible/master/ansible/ping_all.yml) that checks connection between master node and managed hosts:
 
 `ansible-playbook -i inventory ping_all.yml`
-
-Confirm _every_ new host for SSH connections:
-
-    ECDSA key fingerprint is SHA256:HwEUUnBtOm9hVAR2PJflNdCVchSCzIlpOpqYlwp+w+w.
-    Are you sure you want to continue connecting (yes/no)?
-
-Type: `yes` (three times)
 
 Install PHP on web **inventory group**:
 
