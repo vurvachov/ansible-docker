@@ -1,12 +1,33 @@
 ---
-- name: New User
+- name: Genera llave ssh, crea usuario nuevo y añade la llave creada (publica) a cada host especificado.
   hosts: all
   tasks:
-    - name: Create a 2048-bit SSH key
+    #- name: Generar llave SSH
+    #  openssh_keypair:
+    #    path: /keys/app
+    #    size: 2048  
+    - name: Crear usuario app
       user:
         name: app
         password: app
         home: /home/app
-        generate_ssh_key: yes
-        ssh_key_bits: 2048
-        ssh_key_file: .ssh/app
+    - name: Assert .ssh directory
+      file:
+        dest: /home/app/.ssh
+        state: directory
+        owner: app
+        mode: '0700'
+    - name: Instalar llave SSH publica
+      copy:
+        src: keys/app.pub
+        dest: /home/app/.ssh/app.pub
+        owner: app
+        mode: '0600'
+    - name: Instalar llave SSH
+      authorized_key:
+        user: app
+        state: present
+        # Con este comando le estamos indicando que le pase la llave que se encuentra en el fichero app.pub
+        key: "{{ lookup('file', 'keys/app.pub') }}"
+
+    
