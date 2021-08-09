@@ -1,0 +1,12 @@
+---
+- name: New User
+  hosts: all
+  tasks:
+    - name: Create a 2048-bit SSH key
+      user:
+        name: app
+        password: app
+        home: /home/app
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/app
