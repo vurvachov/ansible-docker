@@ -1,0 +1,12 @@
+---
+- name: MariaDB
+  hosts: db
+  tasks:
+    - name: Install MariaDB Server 10.3
+      apt: 
+        name: mariadb-server
+    - name: Restart MariaDB 10.3
+      service: 
+        name: mysql 
+        state: restarted
+

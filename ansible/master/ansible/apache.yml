@@ -1,0 +1,18 @@
+---
+- name: Apache2
+  hosts: web
+  tasks:
+    - name: Install Apache2
+      apt:
+        name: apache2
+        state: present
+    - name: copiar fichero
+      copy:
+        src: ./index.html
+        dest: /var/www/html
+        owner: root
+        group: root
+        mode: '0644'
+    - name: restart apache2
+      service: name=apache2 state=restarted
+      
