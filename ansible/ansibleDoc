@@ -1,0 +1,9 @@
+// Este ejemplo nos enseña como instalar el index.html utilizando templates
+
+- name: Install index.html
+      template:
+        src: templates/index.html
+        dest: /var/www/hmtl.index.html
+        owner: www-data
+        grouo: www-data
+        mode: '0644'
