@@ -2,6 +2,6 @@ version: '3'
 services:
   hello-spring-testing:
     image: 10.250.11.3:5050/vurvachov/hello-spring-boot/hello-spring-testing:${env.BUILD_NUMBER}
-    #build: .
+    build: .
     ports:
       - "8081:8080"
