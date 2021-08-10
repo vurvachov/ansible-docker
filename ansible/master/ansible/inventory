@@ -1,3 +1,4 @@
+sns11 ansible_host=10.250.11.3
 [web]
 host0[1:2] ansible_user=root
 [db]
